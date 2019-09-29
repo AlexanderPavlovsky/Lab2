@@ -5,25 +5,32 @@ import company.Class.Passengers;
 
 import java.util.Scanner;
 
-public class Main {
+import static company.Class.FunUtils.isPositive;
 
+/**
+ * Class Main
+ */
+public class Main {
+    /**
+     * Main function
+     */
     public static void main(String[] args) {
         Scanner str = new Scanner(System.in);
         int menu, length;
         boolean exit = false;
         System.out.print("Enter quantity of passengers: ");
-        length = str.nextInt();
+        length = isPositive(str);
         Passengers passengers = new Passengers(length);
         System.out.println("Enter the information of all the passengers: ");
         construct(passengers, str, length);
         while (!exit) {
             System.out.println("1) Add passenger\n2) Show all passengers\n3)Passengers have sum mass of baggage over than 30\n4)Show all passengers` sum mass of baggage\n" +
                     "5)Location of baggage\n6)Remove passenger by last name\n7)Exit");
-            menu = str.nextInt();
+            menu = isPositive(str);
             switch (menu) {
                 case 1:
                     System.out.print("Enter quantity of add passengers: ");
-                    length = str.nextInt();
+                    length = isPositive(str);
                     System.out.println("Enter the information of all the add passengers: ");
                     construct(passengers, str, length);
                     break;
@@ -56,7 +63,7 @@ public class Main {
 
     }
 
-    private static void construct(Passengers passengers, Scanner str, int length) {
+    private static void construct(final Passengers passengers, Scanner str, final int length) {
         String name, lastName, patronymic, numberFlight, numberBaggage;
         int quantityPlace, sumMassOfBaggage = 0;
         for (int i = 0; i < length; i++){
@@ -72,12 +79,12 @@ public class Main {
             System.out.print("Number baggage: ");
             numberBaggage = str.next();
             System.out.print("Quantity place: ");
-            quantityPlace = str.nextInt();
+            quantityPlace = isPositive(str);
             for (int j = 0; j < quantityPlace; j++) {
                 System.out.print((j + 1) + ") Mass of baggage: ");
-                sumMassOfBaggage += str.nextInt();
+                sumMassOfBaggage += isPositive(str);
             }
-            passengers.push_back(new Passenger(name, lastName, patronymic, numberFlight, numberBaggage, quantityPlace, sumMassOfBaggage));
+            passengers.pushBack(new Passenger(name, lastName, patronymic, numberFlight, numberBaggage, quantityPlace, sumMassOfBaggage));
         }
     }
 }
