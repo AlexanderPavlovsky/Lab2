@@ -1,4 +1,4 @@
-package company.Class;
+package company.classes;
 
 import java.util.Arrays;
 
@@ -13,6 +13,7 @@ public class Passengers {
 
     /**
      * Construct Passengers
+     *
      * @param length Quantity of passengers
      */
     public Passengers(final int length) {
@@ -25,6 +26,7 @@ public class Passengers {
 
     /**
      * Push back to array passengers
+     *
      * @param passenger Object Passenger
      */
     public void pushBack(final Passenger passenger) {
@@ -42,6 +44,7 @@ public class Passengers {
 
     /**
      * Passengers have all mass of baggage over 30
+     *
      * @return get passenger have mass over 30
      */
     public String massOver30() {
@@ -56,6 +59,7 @@ public class Passengers {
 
     /**
      * All mass of baggage of everybody passenger
+     *
      * @return get all mass of baggage of everybody passenger
      */
     public String allMassOfBaggage() {
@@ -68,12 +72,13 @@ public class Passengers {
 
     /**
      * Location of baggage (number flight)
+     *
      * @param numberBaggage number baggage
      * @return number flight
      */
     public String locationOfBaggage(final String numberBaggage) {
         String result = "";
-        for (Passenger passenger : passengers) {
+        for (final Passenger passenger : passengers) {
             if (passenger.getNumberBaggage().equals(numberBaggage)) {
                 result = "Number Flight: " + passenger.getNumberFlight();
             } else {
@@ -85,12 +90,16 @@ public class Passengers {
 
     /**
      * Remove passenger by last name
-     * @param lastName last name
+     *
+     * @param lastName Last name
+     * @return remove passenger
      */
-    public void removeByLastName(final String lastName) {
+    public Passenger removeByLastName(final String lastName) {
         int numberOfPassenger;
+        Passenger passenger = null;
         for (numberOfPassenger = 0; numberOfPassenger < passengers.length; numberOfPassenger++) {
             if (passengers[numberOfPassenger].getLastName().equals(lastName)) {
+                passenger = passengers[numberOfPassenger];
                 break;
             }
         }
@@ -100,16 +109,21 @@ public class Passengers {
             }
         }
         resize(passengers.length - 1);
+        return passenger;
+
     }
 
     @Override
     public String toString() {
         final StringBuilder result = new StringBuilder();
-        for (int i = 0; i < passengers.length; i++) {
-            result.append(i + 1).append(") ").append(passengers[i].toString()).append("\n");
+        if (passengers.length != 0) {
+            for (int i = 0; i < passengers.length; i++) {
+                result.append(i + 1).append(") ").append(passengers[i].toString()).append("\n");
+            }
+        } else {
+            result.append("Passengers doesn't exist");
         }
         return result.toString();
     }
-
 
 }
