@@ -65,3 +65,24 @@ public class FunUtils {
         return line;
     }
 }
+
+/*
+private static double getNumber() {
+        double num = 0;
+        boolean check = false;
+        do {
+            try {
+                System.out.print("Input a number of investors: ");
+                String number = in.nextLine();
+                num = Double.parseDouble(number);
+                if (num > 0)
+                    check = true;
+            } catch (InputMismatchException exc) {
+                System.out.println(exc.getLocalizedMessage());
+            } catch (Exception exc) {
+                System.out.println(exc.getLocalizedMessage());
+            }
+        } while (!check);
+        return num;
+    }
+*/
