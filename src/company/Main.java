@@ -14,7 +14,8 @@ public class Main {
     /**
      * Main function
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args) 
+    {
         final Scanner str = new Scanner(System.in);
         int menu, length;
         boolean exit = false;
@@ -25,7 +26,8 @@ public class Main {
         createPassenger(passengers, str, length);
         System.out.println("\n");
         System.out.println(passengers.massOver30());
-        while (!exit) {
+        while (!exit) 
+        {
             System.out.println("1) Add passenger\n2) Show all passengers\n3) Show all passengers` sum mass of baggage\n" +
                     "4) Location of baggage\n5) Remove passenger by last name\n6) Exit");
             menu = getInt();
